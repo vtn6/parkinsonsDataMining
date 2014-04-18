@@ -9,20 +9,22 @@ dataDictionary = read.csv("ppmiData/_Study_Docs/Data_Dictionary.csv")
 
 striatal_Binding_Ratio_Results = read.csv("ppmiData/Imaging/DaTscan_Striatal_Binding_Ratio_Results.csv")
 patient_Status = read.csv("ppmiData//_Subject_Characteristics/Patient_Status.csv")
+symbol_Digit_Modalities = read.csv("ppmiData/Non_motor_Assessments/Symbol_Digit_Modalities_Text.csv")
 
-head(striatal_Binding_Ratio_Results)
+#symbol_Digit_Modalities = read.csv("ppmiData/Non-motor_Assessments")
+
+pd_Data_Frame = striatal_Binding_Ratio_Results
+
+# adding PD status column  -------------------------------------------------
 
 pD_patient_ind = subset(patient_Status, ENROLL_CAT == 'PD')
 pD_patient_ind = pD_patient_ind[,1]
-
-number_of_patients = length(levels(as.factor(striatal_Binding_Ratio_Results$PATNO)))
-
-
-# adding PD status column to SBR -------------------------------------------------
+number_of_patients = length(levels(as.factor(striatal_Binding_Ratio_Results$PATNO))) #number of 
 foo1 = c()
-for(i in 1:dim(striatal_Binding_Ratio_Results)[1])
+
+for(i in 1:dim(pd_Data_Frame)[1])
 {
-  if(striatal_Binding_Ratio_Results[i,1] %in% pD_patient_ind)
+  if(pd_Data_Frame[i,1] %in% pD_patient_ind)
   {
     foo1[i] = TRUE #TRUE FOR PD
   }
@@ -32,10 +34,61 @@ for(i in 1:dim(striatal_Binding_Ratio_Results)[1])
   }
 }
 
-striatal_Binding_Ratio_Results[,"PD_STATUS"] = foo1
+# adding symbol digit modalities ------------------------------------------
 
-cols = character(nrow(striatal_Binding_Ratio_Results))
-cols[striatal_Binding_Ratio_Results$PD_STATUS == TRUE ] = "yellow"
-cols[striatal_Binding_Ratio_Results$PD_STATUS == FALSE ] = "green"
+foo1 = c()
+foo2 = c()
+for(i in 1:dim(pd_Data_Frame)[1])
+{
+  if(pd_Data_Frame[i,1] %in% pD_patient_ind)
+  {
+    foo1[i] = TRUE #TRUE FOR PD
+  }
+  else
+  {
+    foo1[i] = FALSE # FALSE FOR HC
+  }
+}
 
-pairs(striatal_Binding_Ratio_Results[,c(-1,-2)],col=cols)      
+
+# calculating the average variance of the caudate variables ---------------
+#we need to know this in order to compress the patient data temporally
+patients = levels(as.factor(striatal_Binding_Ratio_Results$PATNO)) #unique patient list
+caudate_r_variance = c()
+caudate_l_variance = c()
+putamen_r_variance = c()
+putamen_l_variance = c()
+for(i in 1:length(patients))
+{
+  pikachu = subset(striatal_Binding_Ratio_Results, PATNO == patients[i])
+  if(dim(pikachu)[1]>1)
+  {
+    caudate_r_variance[i] = var(pikachu$CAUDATE_R)
+    caudate_l_variance[i] = var(pikachu$CAUDATE_L)
+    putamen_r_variance[i] = var(pikachu$PUTAMEN_R)
+    putamen_l_variance[i] = var(pikachu$PUTAMEN_L)
+  }
+}
+sbr_names = c("caudate_r_variance","caudate_l_variance",
+              "putamen_r_variance","putamen_l_variance")
+means = c(mean(caudate_r_variance,na.rm=TRUE),
+          mean(caudate_l_variance,na.rm=TRUE),
+          mean(putamen_r_variance,na.rm=TRUE),
+          mean(putamen_l_variance,na.rm=TRUE))
+
+mean_patient_sbr_variance = data.frame(sbr_names,means)
+
+variances = c(var(striatal_Binding_Ratio_Results$CAUDATE_R, na.rm=TRUE),
+              var(striatal_Binding_Ratio_Results$CAUDATE_L, na.rm=TRUE),
+              var(striatal_Binding_Ratio_Results$PUTAMEN_R, na.rm=TRUE),
+              var(striatal_Binding_Ratio_Results$PUTAMEN_L, na.rm=TRUE))
+
+sbr_variance = data.frame(sbr_names,variances)
+# plotting pairs ----------------------------------------------------------
+pd_Data_Frame[,"PD_STATUS"] = foo1
+
+cols = character(nrow(pd_Data_Frame))
+cols[pd_Data_Frame$PD_STATUS == TRUE ] = "yellow"
+cols[pd_Data_Frame$PD_STATUS == FALSE ] = "green"
+
+# pairs(pd_Data_Frame[,c(-1,-2)],col=cols)      
