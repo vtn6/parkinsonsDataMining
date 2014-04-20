@@ -162,8 +162,13 @@ pd.sbr.meanAndAvgDiff.data[,"pdTRUE"] = pd.ind
 
 cols = character(nrow(pd.sbr.meanAndAvgDiff.data))
 cols[ pd.sbr.meanAndAvgDiff.data$pdTRUE == TRUE ] = "blue"
-cols[ pd.sbr.meanAndAvgDiff.data$pdTRUE == FALSE ] = "white"
-pairs(pd.sbr.meanAndAvgDiff.data,col = cols,pch = 0.11)
+cols[ pd.sbr.meanAndAvgDiff.data$pdTRUE == FALSE ] = "red"
+
+
+
+pc = princomp(pd.sbr.meanAndAvgDiff.data[,c(-1,-10)],na.action = na.omit)
+
+#pairs(pd.sbr.meanAndAvgDiff.data,col = cols)
 # 
 
 
