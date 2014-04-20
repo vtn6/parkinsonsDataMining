@@ -84,11 +84,91 @@ variances = c(var(striatal_Binding_Ratio_Results$CAUDATE_R, na.rm=TRUE),
               var(striatal_Binding_Ratio_Results$PUTAMEN_L, na.rm=TRUE))
 
 sbr_variance = data.frame(sbr_names,variances)
+
+
+# Calculating the average, and the average change of the caudate variables -----------------
+#patients = levels(as.factor(striatal_Binding_Ratio_Results$PATNO))
+caudate.r.avg.diff = c()
+caudate.l.avg.diff = c()
+putamen.r.avg.diff = c()
+putamen.l.avg.diff = c()
+caudate.r.avg = c()
+caudate.l.avg = c()
+putamen.r.avg = c()
+putamen.l.avg = c()
+
+for(i in 1:length(patients))
+{
+  pikachu = subset(striatal_Binding_Ratio_Results, PATNO == patients[i])
+  
+  #calculating the means
+  caudate.r.avg[i] = mean(pikachu$CAUDATE_R)
+  caudate.l.avg[i] = mean(pikachu$CAUDATE_L)
+  putamen.r.avg[i] = mean(pikachu$PUTAMEN_R)
+  putamen.l.avg[i] = mean(pikachu$PUTAMEN_L)
+  
+  if(dim(pikachu)[1]>1)
+  {
+    caudate.r.avg.diff[i] = mean(diff(pikachu$CAUDATE_R))
+    caudate.l.avg.diff[i] = mean(diff(pikachu$CAUDATE_L))
+    putamen.r.avg.diff[i] = mean(diff(pikachu$PUTAMEN_R))
+    putamen.l.avg.diff[i] = mean(diff(pikachu$PUTAMEN_L))
+    #print(caudate.l.avg.diff[i])
+  }
+  else
+  {
+    caudate.r.avg.diff[i] = NA
+    caudate.l.avg.diff[i] = NA
+    putamen.r.avg.diff[i] = NA
+    putamen.l.avg.diff[i] = NA
+  }
+  
+}
+
+sbr.avg = data.frame(patients,
+                     caudate.r.avg,caudate.l.avg,
+                     putamen.r.avg,putamen.l.avg
+                     )
+
+sbr.avg.diff = data.frame(patients,
+                          caudate.r.avg.diff,caudate.l.avg.diff,
+                          putamen.r.avg.diff,putamen.l.avg.diff
+                          )
 # plotting pairs ----------------------------------------------------------
 pd_Data_Frame[,"PD_STATUS"] = foo1
 
-cols = character(nrow(pd_Data_Frame))
-cols[pd_Data_Frame$PD_STATUS == TRUE ] = "yellow"
-cols[pd_Data_Frame$PD_STATUS == FALSE ] = "green"
+pd.sbr.meanAndAvgDiff.data = data.frame(patients,
+                                        caudate.r.avg,caudate.l.avg,
+                                        putamen.r.avg,putamen.l.avg,
+                                        caudate.r.avg.diff,caudate.l.avg.diff,
+                                        putamen.r.avg.diff,putamen.l.avg.diff
+                                        )
+
+# getting the colors ------------------------------------------------------
+pd.ind = c()
+for(i in 1:dim(pd.sbr.meanAndAvgDiff.data)[1])
+{
+  if(pd.sbr.meanAndAvgDiff.data[i,1] %in% subset(patient_Status, ENROLL_CAT == 'PD')[,1])
+  {
+    pd.ind[i] = TRUE #TRUE FOR PD
+  }
+  else
+  {
+    pd.ind[i] = FALSE # FALSE FOR HC
+  }
+}
+
+pd.sbr.meanAndAvgDiff.data[,"pdTRUE"] = pd.ind
+
+cols = character(nrow(pd.sbr.meanAndAvgDiff.data))
+cols[ pd.sbr.meanAndAvgDiff.data$pdTRUE == TRUE ] = "blue"
+cols[ pd.sbr.meanAndAvgDiff.data$pdTRUE == FALSE ] = "white"
+pairs(pd.sbr.meanAndAvgDiff.data,col = cols,pch = 0.11)
+# 
+
+
+#cols = character(nrow(pd_Data_Frame))
+#cols[pd_Data_Frame$PD_STATUS == TRUE ] = "yellow"
+#cols[pd_Data_Frame$PD_STATUS == FALSE ] = "green"
 
 # pairs(pd_Data_Frame[,c(-1,-2)],col=cols)      
