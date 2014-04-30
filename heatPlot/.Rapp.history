@@ -1,0 +1,239 @@
+library(gplots)#
+mat = matrix( rnorm(25), 5, 5)#
+mat[c(1,6,8,11,15,20,22,24)] = NaN#
+#
+heatmap.2( mat,#
+           col = colorpanel(100,"red","yellow","green"),#
+           margins = c(12, 22),#
+           trace = "none", #
+           xlab = "Comparison",#
+           lhei = c(2, 8),#
+           scale = c("none"),#
+           symbreaks = min(mat, na.rm=TRUE),#
+           na.color="blue",#
+           cexRow = 0.5, cexCol = 0.7,#
+           main = "DE genes", #
+           dendrogram = "row", #
+           Colv = FALSE )
+library(gplots)#
+mat = matrix( rnorm(25), 5, 5)#
+mat[c(1,6,8,11,15,20,22,24)] = NaN#
+#
+heatmap.2( mat,#
+           col = colorpanel(100,"red","yellow","green"),#
+           margins = c(12, 22),#
+           trace = "none", #
+           xlab = "Comparison",#
+           lhei = c(2, 8),#
+           scale = c("none"),#
+           symbreaks = min(mat, na.rm=TRUE),#
+           na.color="blue",#
+           cexRow = 0.5, cexCol = 0.7,#
+           main = "DE genes", #
+           dendrogram = "row", #
+           Colv = FALSE )
+library(gplots)#
+mat = matrix( rnorm(25), 5, 5)#
+mat[c(1,6,8,11,15,20,22,24)] = NaN#
+#
+heatmap.2( mat,#
+           col = colorpanel(100,"red","yellow","green"),#
+           margins = c(12, 22),#
+           trace = "none", #
+           xlab = "Comparison",#
+           lhei = c(2, 8),#
+           scale = c("none"),#
+           symbreaks = min(mat, na.rm=TRUE),#
+           na.color="blue",#
+           cexRow = 0.5, cexCol = 0.7,#
+           main = "DE genes", #
+           dendrogram = "row", #
+           Colv = FALSE )
+library(gplots)#
+mat = matrix( rnorm(25), 5, 5)#
+mat[c(1,6,8,11,15,20,22,24)] = NaN#
+#
+heatmap.2( mat,#
+           col = colorpanel(100,"red","yellow","green"),#
+           margins = c(12, 22),#
+           trace = "none", #
+           xlab = "Comparison",#
+           lhei = c(2, 8),#
+           scale = c("none"),#
+           symbreaks = min(mat, na.rm=TRUE),#
+           na.color="blue",#
+           cexRow = 0.5, cexCol = 0.7,#
+           main = "DE genes", #
+           dendrogram = "row", #
+           Colv = FALSE )
+library(gplots)#
+mat = matrix( rnorm(25), 5, 5)#
+mat[c(1,6,8,11,15,20,22,24)] = NaN#
+#
+heatmap.2( mat,#
+           col = colorpanel(100,"red","yellow","green"),#
+           margins = c(12, 22),#
+           trace = "none", #
+           xlab = "Comparison",#
+           lhei = c(2, 8),#
+           scale = c("none"),#
+           symbreaks = min(mat, na.rm=TRUE),#
+           na.color="blue",#
+           cexRow = 0.5, cexCol = 0.7,#
+           main = "DE genes", #
+           dendrogram = "row", #
+           Colv = FALSE )
+library(gplots)#
+mat = matrix( rnorm(25), 5, 5)#
+mat[c(1,6,8,11,15,20,22,24)] = NaN#
+#
+heatmap.2( mat,#
+           col = colorpanel(100,"red","yellow","green"),#
+           margins = c(12, 22),#
+           trace = "none", #
+           xlab = "Comparison",#
+           lhei = c(2, 8),#
+           scale = c("none"),#
+           symbreaks = min(mat, na.rm=TRUE),#
+           na.color="blue",#
+           cexRow = 0.5, cexCol = 0.7,#
+           main = "DE genes", #
+           dendrogram = "row", #
+           Colv = FALSE )
+library(gplots)#
+mat = matrix( rnorm(25), 5, 5)#
+mat[c(1,6,8,11,15,20,22,24)] = NaN#
+#
+heatmap.2( mat,#
+           col = colorpanel(100,"red","yellow","green"),#
+           margins = c(12, 22),#
+           trace = "none", #
+           xlab = "Comparison",#
+           lhei = c(2, 8),#
+           scale = c("none"),#
+           symbreaks = min(mat, na.rm=TRUE),#
+           na.color="blue",#
+           cexRow = 0.5, cexCol = 0.7,#
+           main = "DE genes", #
+           dendrogram = "row", #
+           Colv = FALSE )
+library(gplots)#
+mat = matrix( rnorm(25), 5, 5)#
+mat[c(1,6,8,11,15,20,22,24)] = NaN#
+#
+heatmap.2( mat,#
+           col = colorpanel(100,"red","yellow","green"),#
+           margins = c(12, 22),#
+           trace = "none", #
+           xlab = "Comparison",#
+           lhei = c(2, 8),#
+           scale = c("none"),#
+           symbreaks = min(mat, na.rm=TRUE),#
+           na.color="blue",#
+           cexRow = 0.5, cexCol = 0.7,#
+           main = "DE genes", #
+           dendrogram = "row", #
+           Colv = FALSE )
+library(gplots)#
+mat = matrix( rnorm(25), 5, 5)#
+mat[c(1,6,8,11,15,20,22,24)] = NaN#
+#
+heatmap.2( mat,#
+           col = colorpanel(100,"red","yellow","green"),#
+           margins = c(12, 22),#
+           trace = "none", #
+           xlab = "Comparison",#
+           lhei = c(2, 8),#
+           scale = c("none"),#
+           symbreaks = min(mat, na.rm=TRUE),#
+           na.color="blue",#
+           cexRow = 0.5, cexCol = 0.7,#
+           main = "DE genes", #
+           dendrogram = "row", #
+           Colv = FALSE )
+library(gplots)#
+mat = matrix( rnorm(25), 5, 5)#
+mat[c(1,6,8,11,15,20,22,24)] = NaN#
+#
+heatmap.2( mat,#
+           col = colorpanel(100,"red","yellow","green"),#
+           margins = c(12, 22),#
+           trace = "none", #
+           xlab = "Comparison",#
+           lhei = c(2, 8),#
+           scale = c("none"),#
+           symbreaks = min(mat, na.rm=TRUE),#
+           na.color="blue",#
+           cexRow = 0.5, cexCol = 0.7,#
+           main = "DE genes", #
+           dendrogram = "row", #
+           Colv = FALSE )
+library(gplots)#
+mat = matrix( rnorm(25), 5, 5)#
+mat[c(1,6,8,11,15,20,22,24)] = NaN#
+#
+heatmap.2( mat,#
+           col = colorpanel(100,"red","yellow","green"),#
+           margins = c(12, 22),#
+           trace = "none", #
+           xlab = "Comparison",#
+           lhei = c(2, 8),#
+           scale = c("none"),#
+           symbreaks = min(mat, na.rm=TRUE),#
+           na.color="blue",#
+           cexRow = 0.5, cexCol = 0.7,#
+           main = "DE genes", #
+           dendrogram = "row", #
+           Colv = FALSE )
+library(gplots)#
+mat = matrix( rnorm(25), 5, 5)#
+mat[c(1,6,8,11,15,20,22,24)] = NaN#
+#
+heatmap.2( mat,#
+           col = colorpanel(100,"red","yellow","green"),#
+           margins = c(12, 22),#
+           trace = "none", #
+           xlab = "Comparison",#
+           lhei = c(2, 8),#
+           scale = c("none"),#
+           symbreaks = min(mat, na.rm=TRUE),#
+           na.color="blue",#
+           cexRow = 0.5, cexCol = 0.7,#
+           main = "DE genes", #
+           dendrogram = "row", #
+           Colv = FALSE )
+library(plyr)#
+library(ggplot2)#
+library(gplots)#
+#
+rm(list = ls())#
+setwd("~/Dropbox//ORIE 4740 - Final Project/heatPlot/")#
+ppmi.raw.data = read.csv("pichu.csv",header=TRUE)#
+ppmi.data = ppmi.raw.data[c(1:10),c(4:6)]#
+#
+ppmi.data = as.matrix(ppmi.data)#
+#
+heatmap.2(ppmi.data,trace="none",#
+          na.color = "blue")
+head(ppmi.data)
+mat
+library(gplots)#
+mat = matrix( rnorm(25), 5, 5)#
+mat[c(1,6,8,11,15,20,22,24)] = NaN#
+#
+heatmap.2( mat,#
+           col = colorpanel(100,"red","yellow","green"),#
+           margins = c(12, 22),#
+           trace = "none", #
+           xlab = "Comparison",#
+           lhei = c(2, 8),#
+           scale = c("none"),#
+           symbreaks = min(mat, na.rm=TRUE),#
+           na.color="blue",#
+           cexRow = 0.5, cexCol = 0.7,#
+           main = "DE genes", #
+           dendrogram = "row", #
+           Colv = FALSE )
+mat
+ppmi.data = as.matrix(ppmi.data)
+ppmi.data
