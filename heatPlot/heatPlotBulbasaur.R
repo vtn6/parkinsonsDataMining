@@ -4,14 +4,49 @@ library(gplots)
 
 rm(list = ls())
 setwd("~/Dropbox//ORIE 4740 - Final Project/heatPlot/")
-ppmi.raw.data = read.csv("pichu.csv",header=TRUE)
+ppmi.raw.data = read.csv("pichu.csv",header=TRUE,
+                         stringsAsFactors = TRUE
+                         )
+factor.index = c()
+for (i in 1:dim(ppmi.raw.data)[2])
+{
+  if(is.factor(ppmi.raw.data[[i]])==TRUE)
+  {
+    print("fuck")
+    factor.index = c(factor.index,i)
+  }
+}
 
-#when we include 4:66 we get an errorr message that the std is 0
-ppmi.data = ppmi.raw.data[,c(4:64)]
 
+ppmi.data = ppmi.raw.data[,-factor.index]
+#ppmi.data = ppmi.raw.data[,c(4:250)]
 cor.ppmi = cor(ppmi.data,use = "pairwise.complete.obs")
 
-heatmap.2(cor.ppmi)
+heatmap.2(cor.ppmi,
+          col = colorpanel(200,"red","yellow","green"),
+          na.color="blue",
+          dendrogram = "row",
+          symm =TRUE,
+          trace = "none")
+
+
+
+# heatmap.2(cor.ppmi,
+#           col = colorpanel(100,"red","yellow","green"),          tracecol = "#303030",
+#           dendrogram = "row",
+#           symm =TRUE)
+
+#Variable Clustering, using distance based on cor()
+
+# heatmap.2(cor.ppmi,
+#           Rowv=FALSE,
+#           symm =TRUE,
+#           col = colorpanel(100,"red","yellow","green"),
+#           distfun = function(c) as.dist(1-c),
+#           trace = "none",
+#           main = "Using Distance",
+#           )
+
 # ppmi.data = as.matrix(ppmi.data)
 # 
 # heatmap.2( ppmi.data,
