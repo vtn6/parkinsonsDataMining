@@ -7,6 +7,7 @@ setwd("~/Dropbox//ORIE 4740 - Final Project/heatPlot/")
 ppmi.raw.data = read.csv("pichu.csv",header=TRUE,
                          stringsAsFactors = TRUE
                          )
+
 factor.index = c()
 for (i in 1:dim(ppmi.raw.data)[2])
 {
@@ -22,13 +23,27 @@ ppmi.data = ppmi.raw.data[,-factor.index]
 #ppmi.data = ppmi.raw.data[,c(4:250)]
 cor.ppmi = cor(ppmi.data,use = "pairwise.complete.obs")
 
+
+print("correlation calculated :D")
+
+png(filename = "thisisawkward2.png",
+    width = 50,
+    height = 50,
+    units = "cm",
+    res = 1200,
+    pointsize = 4,
+    bg = "white")
+
 heatmap.2(cor.ppmi,
           col = colorpanel(200,"red","yellow","green"),
           na.color="blue",
           dendrogram = "row",
           symm =TRUE,
           trace = "none")
+dev.off()
+print("heatmap generated")
 
+hc = hclust(dist(cor.ppmi))
 
 
 # heatmap.2(cor.ppmi,
